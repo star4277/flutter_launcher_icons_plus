@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.15.0 (22nd May 2026)
+
+- OHOS: Added layered icon workflow with `image_path_foreground` + `image_path_background`.
+- OHOS: Added nested config parsing support under `flutter_launcher_icons -> ohos` (for example `ohos.generate`, `ohos.image_path`, `ohos.image_path_foreground`, `ohos.image_path_background`).
+- OHOS: Fixed deterministic output naming rules:
+  - Single mode outputs `icon.png`
+  - Layered mode outputs `foreground.png`, `background.png`, `startIcon.png` (from `image_path`)
+- OHOS: Updated module replacement behavior:
+  - Layered mode sets `icon -> $media:layered_image`
+  - Layered mode sets `startWindowIcon -> $media:startIcon`
+- OHOS: `foreground/background` now keep original pixel size in layered mode (no resize), while outputs are still encoded as PNG resource files.
+- OHOS: Stopped modifying `ohosTest` icon resources; replacements now target app resources only.
+- Docs: Rewrote documentation and added bilingual guides:
+  - `README.md` (English, brief)
+  - `README.zh-CN.md` (Chinese, detailed OHOS usage)
+- Metadata: Bumped package version to `0.15.0` and replaced `homepage/repository/issue_tracker` with the new repository links.
+
 ## 0.14.4 (10th June 2025)
 
 - Removed rules which no longer exist from analysis_options [#598](https://github.com/fluttercommunity/flutter_launcher_icons/issues/598)
