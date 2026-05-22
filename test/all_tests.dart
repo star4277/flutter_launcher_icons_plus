@@ -6,6 +6,7 @@ import 'config_test.dart' as fli_config;
 import 'macos/macos_icon_generator_test.dart' as macos_icons_gen_test;
 import 'macos/macos_icon_template_test.dart' as macos_template_test;
 import 'main_test.dart' as main_test;
+import 'ohos_test.dart' as ohos_test;
 import 'utils_test.dart' as utils_test;
 import 'web/web_icon_generator_test.dart' as web_icon_gen_test;
 import 'web/web_template_test.dart' as web_template_test;
@@ -21,6 +22,8 @@ void main() {
     main_test.main();
     // android
     android_test.main();
+    // ohos
+    ohos_test.main();
     // web
     web_template_test.main();
     web_icon_gen_test.main();

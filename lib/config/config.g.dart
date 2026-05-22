@@ -13,14 +13,16 @@ Config _$ConfigFromJson(Map json) => $checkedCreate(
         final val = Config(
           imagePath: $checkedConvert('image_path', (v) => v as String?),
           android: $checkedConvert('android', (v) => v ?? false),
-          ios: $checkedConvert('ios', (v) => v ?? false),
           ohos: $checkedConvert('ohos', (v) => v ?? false),
-          backgroundColorOhos:
-              $checkedConvert('background_color_ohos', (v) => v as String?),
+          ios: $checkedConvert('ios', (v) => v ?? false),
           imagePathAndroid:
               $checkedConvert('image_path_android', (v) => v as String?),
           imagePathOhos:
               $checkedConvert('image_path_ohos', (v) => v as String?),
+          imagePathOhosForeground: $checkedConvert(
+              'image_path_ohos_foreground', (v) => v as String?),
+          imagePathOhosBackground: $checkedConvert(
+              'image_path_ohos_background', (v) => v as String?),
           imagePathIOS: $checkedConvert('image_path_ios', (v) => v as String?),
           imagePathIOSDarkTransparent: $checkedConvert(
               'image_path_ios_dark_transparent', (v) => v as String?),
@@ -46,6 +48,8 @@ Config _$ConfigFromJson(Map json) => $checkedCreate(
               'desaturate_tinted_to_grayscale_ios', (v) => v as bool? ?? false),
           backgroundColorIOS: $checkedConvert(
               'background_color_ios', (v) => v as String? ?? '#ffffff'),
+          backgroundColorOhos:
+              $checkedConvert('background_color_ohos', (v) => v as String?),
           webConfig: $checkedConvert(
               'web', (v) => v == null ? null : WebConfig.fromJson(v as Map)),
           windowsConfig: $checkedConvert('windows',
@@ -59,6 +63,8 @@ Config _$ConfigFromJson(Map json) => $checkedCreate(
         'imagePath': 'image_path',
         'imagePathAndroid': 'image_path_android',
         'imagePathOhos': 'image_path_ohos',
+        'imagePathOhosForeground': 'image_path_ohos_foreground',
+        'imagePathOhosBackground': 'image_path_ohos_background',
         'imagePathIOS': 'image_path_ios',
         'imagePathIOSDarkTransparent': 'image_path_ios_dark_transparent',
         'imagePathIOSTintedGrayscale': 'image_path_ios_tinted_grayscale',
@@ -70,10 +76,10 @@ Config _$ConfigFromJson(Map json) => $checkedCreate(
         'removeAlphaIOS': 'remove_alpha_ios',
         'desaturateTintedToGrayscaleIOS': 'desaturate_tinted_to_grayscale_ios',
         'backgroundColorIOS': 'background_color_ios',
+        'backgroundColorOhos': 'background_color_ohos',
         'webConfig': 'web',
         'windowsConfig': 'windows',
-        'macOSConfig': 'macos',
-        'backgroundColorOhos': 'background_color_ohos'
+        'macOSConfig': 'macos'
       },
     );
 
@@ -83,8 +89,10 @@ Map<String, dynamic> _$ConfigToJson(Config instance) => <String, dynamic>{
       'ios': instance.ios,
       'ohos': instance.ohos,
       'image_path_android': instance.imagePathAndroid,
-      'image_path_ohos': instance.imagePathOhos,
       'image_path_ios': instance.imagePathIOS,
+      'image_path_ohos': instance.imagePathOhos,
+      'image_path_ohos_foreground': instance.imagePathOhosForeground,
+      'image_path_ohos_background': instance.imagePathOhosBackground,
       'image_path_ios_dark_transparent': instance.imagePathIOSDarkTransparent,
       'image_path_ios_tinted_grayscale': instance.imagePathIOSTintedGrayscale,
       'adaptive_icon_foreground': instance.adaptiveIconForeground,
@@ -96,8 +104,8 @@ Map<String, dynamic> _$ConfigToJson(Config instance) => <String, dynamic>{
       'desaturate_tinted_to_grayscale_ios':
           instance.desaturateTintedToGrayscaleIOS,
       'background_color_ios': instance.backgroundColorIOS,
+      'background_color_ohos': instance.backgroundColorOhos,
       'web': instance.webConfig,
       'windows': instance.windowsConfig,
       'macos': instance.macOSConfig,
-      'background_color_ohos': instance.backgroundColorOhos,
     };

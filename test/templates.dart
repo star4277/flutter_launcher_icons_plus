@@ -5,7 +5,7 @@ flutter_launcher_icons:
   image_path: "assets/images/icon-128x128.png"
   image_path_android: "assets/images/icon-710x599-android.png"
   image_path_ios: "assets/images/icon-1024x1024.png"
-  adaptive_icon_background: "assets/images/christmas-background.png"
+  adaptive_icon_background: "assets/images/christmas-background_world.png"
   adaptive_icon_foreground: "assets/images/icon-foreground-432x432.png"
   adaptive_icon_monochrome: "assets/images/icon-monochrome-432x432.png"
   min_sdk_android: 21
@@ -55,7 +55,7 @@ image_path: "assets/images/icon-128x128.png"
  ad
 image_path_android: "assets/images/icon-710x599-android.png"
 image_path_ios: "assets/images/icon-1024x1024.png"
-adaptive_icon_background: "assets/images/christmas-background.png"
+adaptive_icon_background: "assets/images/christmas-background_world.png"
 adaptive_icon_foreground: "assets/images/icon-foreground-432x432.png"
 adaptive_icon_monochrome: "assets/images/icon-monochrome-432x432.png"
 web:
@@ -111,7 +111,7 @@ flutter_launcher_icons:
   image_path: "assets/images/icon-128x128.png"
   image_path_android: "assets/images/icon-710x599-android.png"
   image_path_ios: "assets/images/icon-1024x1024.png"
-  adaptive_icon_background: "assets/images/christmas-background.png"
+  adaptive_icon_background: "assets/images/christmas-background_world.png"
   adaptive_icon_foreground: "assets/images/icon-foreground-432x432.png"
   adaptive_icon_monochrome: "assets/images/icon-monochrome-432x432.png"
   min_sdk_android: 21
@@ -177,7 +177,7 @@ flutter_launcher_icons:
   image_path: "assets/images/icon-128x128.png"
   image_path_android: "assets/images/icon-710x599-android.png"
   image_path_ios: "assets/images/icon-1024x1024.png"
-  adaptive_icon_background: "assets/images/christmas-background.png"
+  adaptive_icon_background: "assets/images/christmas-background_world.png"
   adaptive_icon_foreground: "assets/images/icon-foreground-432x432.png"
   adaptive_icon_monochrome: "assets/images/icon-monochrome-432x432.png"
   web:

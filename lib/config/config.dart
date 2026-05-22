@@ -26,6 +26,8 @@ class Config {
     this.ios = false,
     this.imagePathAndroid,
     this.imagePathOhos,
+    this.imagePathOhosForeground,
+    this.imagePathOhosBackground,
     this.imagePathIOS,
     this.imagePathIOSDarkTransparent,
     this.imagePathIOSTintedGrayscale,
@@ -88,11 +90,21 @@ class Config {
             if (json['flutter_icons'] != null) {
               stderr.writeln('\n⚠ Warning: flutter_icons has been deprecated '
                   'please use flutter_launcher_icons instead in your yaml files');
-              return Config.fromJson(json['flutter_icons']);
+              return Config.fromJson(
+                _normalizeOhosConfig(
+                  Map<dynamic, dynamic>.from(json['flutter_icons'] as Map),
+                ),
+              );
             }
             // if we have flutter_launcher_icons configuration ...
             if (json['flutter_launcher_icons'] != null) {
-              return Config.fromJson(json['flutter_launcher_icons']);
+              return Config.fromJson(
+                _normalizeOhosConfig(
+                  Map<dynamic, dynamic>.from(
+                    json['flutter_launcher_icons'] as Map,
+                  ),
+                ),
+              );
             }
           }
           return null;
@@ -104,6 +116,46 @@ class Config {
     } catch (e) {
       rethrow;
     }
+  }
+
+  static Map<dynamic, dynamic> _normalizeOhosConfig(
+    Map<dynamic, dynamic> rootConfig,
+  ) {
+    final dynamic ohos = rootConfig['ohos'];
+    if (ohos is! Map) {
+      return rootConfig;
+    }
+
+    final normalized = Map<dynamic, dynamic>.from(rootConfig);
+    final ohosMap = Map<dynamic, dynamic>.from(ohos);
+
+    normalized['ohos'] = ohosMap['generate'] ?? true;
+
+    final imagePathOhos =
+        (ohosMap['image_path_ohos'] ?? ohosMap['image_path']) as String?;
+    if (imagePathOhos != null) {
+      normalized['image_path_ohos'] = imagePathOhos;
+    }
+
+    final foregroundPath = (ohosMap['image_path_ohos_foreground'] ??
+        ohosMap['image_path_foreground']) as String?;
+    if (foregroundPath != null) {
+      normalized['image_path_ohos_foreground'] = foregroundPath;
+    }
+
+    final backgroundPath = (ohosMap['image_path_ohos_background'] ??
+        ohosMap['image_path_background']) as String?;
+    if (backgroundPath != null) {
+      normalized['image_path_ohos_background'] = backgroundPath;
+    }
+
+    final backgroundColor = (ohosMap['background_color_ohos'] ??
+        ohosMap['background_color']) as String?;
+    if (backgroundColor != null) {
+      normalized['background_color_ohos'] = backgroundColor;
+    }
+
+    return normalized;
   }
 
   /// Generic image_path
@@ -130,6 +182,14 @@ class Config {
   /// Image path specific to ohos
   @JsonKey(name: 'image_path_ohos')
   final String? imagePathOhos;
+
+  /// Layered foreground image path specific to ohos
+  @JsonKey(name: 'image_path_ohos_foreground')
+  final String? imagePathOhosForeground;
+
+  /// Layered background image path specific to ohos
+  @JsonKey(name: 'image_path_ohos_background')
+  final String? imagePathOhosBackground;
 
   /// IOS image_path_ios_dark_transparent
   @JsonKey(name: 'image_path_ios_dark_transparent')
@@ -205,6 +265,7 @@ class Config {
   bool get hasPlatformConfig {
     return ios != false ||
         android != false ||
+        ohos != false ||
         webConfig != null ||
         windowsConfig != null ||
         macOSConfig != null;
@@ -242,6 +303,12 @@ class Config {
   /// If image_path_ohos is found, this will be prioritised over the image_path
   /// value.
   String? getImagePathOhos() => imagePathOhos ?? imagePath;
+
+  /// Method for retrieval of OHOS layered foreground path.
+  String? getImagePathOhosForeground() => imagePathOhosForeground;
+
+  /// Method for retrieval of OHOS layered background path.
+  String? getImagePathOhosBackground() => imagePathOhosBackground;
 
   // TODO(RatakondalaArun): refactor after Android & iOS configs will be refactored to the new schema
   // https://github.com/fluttercommunity/flutter_launcher_icons/issues/394

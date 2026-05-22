@@ -94,6 +94,30 @@ void main() {
           throwsA(isA<InvalidConfigException>()),
         );
       });
+
+      test('should parse nested ohos config like web/windows style', () async {
+        await d.dir('fli_test', [
+          d.file(
+            'nested_ohos.yaml',
+            '''
+flutter_launcher_icons:
+  ohos:
+    generate: true
+    image_path_ohos_foreground: "assets/fg.png"
+    image_path_ohos_background: "assets/bg.png"
+''',
+          ),
+        ]).create();
+
+        final configs = Config.loadConfigFromPath(
+          'nested_ohos.yaml',
+          prefixPath,
+        );
+        expect(configs, isNotNull);
+        expect(configs!.isNeedingNewOhosIcon, isTrue);
+        expect(configs.getImagePathOhosForeground(), equals('assets/fg.png'));
+        expect(configs.getImagePathOhosBackground(), equals('assets/bg.png'));
+      });
     });
     group('#loadConfigFromTestPubSpec', () {
       test('should return valid configs', () {

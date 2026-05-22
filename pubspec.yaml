@@ -1,10 +1,10 @@
 name: flutter_launcher_icons
-description: A package which simplifies the task of updating your Flutter app's launcher icon.
-version: 0.14.4
+description: A Flutter launcher icon tool with enhanced OHOS support, including single/layered icon workflows and fixed output naming.
+version: 0.15.0
 maintainer: Mark O'Sullivan (@MarkOSullivan94)
-homepage: https://github.com/fluttercommunity/flutter_launcher_icons
-repository: https://github.com/fluttercommunity/flutter_launcher_icons/
-issue_tracker: https://github.com/fluttercommunity/flutter_launcher_icons/issues
+homepage: https://github.com/star4277/flutter_launcher_icons_ohos
+repository: https://github.com/star4277/flutter_launcher_icons_ohos
+issue_tracker: https://github.com/star4277/flutter_launcher_icons_ohos/issues
 
 dependencies:
   args: ^2.5.0
