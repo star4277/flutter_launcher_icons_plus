@@ -1,5 +1,7 @@
 # Flutter Launcher Icons
 
+[简体中文](README.zh-CN.md)
+
 [![Flutter Community: flutter_launcher_icons](https://fluttercommunity.dev/_github/header/flutter_launcher_icons)](https://github.com/fluttercommunity/community)
 
 [![pub package](https://img.shields.io/pub/v/flutter_launcher_icons.svg)](https://pub.dartlang.org/packages/flutter_launcher_icons)
@@ -41,9 +43,15 @@ dev_dependencies:
 
 flutter_launcher_icons:
   android: "launcher_icon"
-  ios: true
   image_path: "assets/icon/icon.png"
   min_sdk_android: 21 # android min sdk min:16, default 21
+  ios: true
+  ohos:
+    generate: true
+    image_path: "path/to/image.png"
+    # Optional layered mode:
+    image_path_foreground: "path/to/foreground.png"
+    image_path_background: "path/to/background.png"  
   web:
     generate: true
     image_path: "path/to/image.png"
@@ -120,6 +128,22 @@ Shown below is the full list of attributes which you can specify within your Flu
 - `image_path_ios_tinted_grayscale`: The location of the tinted mode icon image file specific for iOS 18+ platform. *Note: This icon should be an grayscale image. Use `desaturate_tinted_to_grayscale_ios: true` to automatically desaturate the image provided here.*
 - `desaturate_tinted_to_grayscale_ios`: Automatically desaturates tinted mode icon image to grayscale, *defaults to false*
 - `background_color_ios`: The color (in the format "#RRGGBB") to be used as the background when removing the alpha channel. It is used only when the `remove_alpha_ios` property is set to true. (optional - if not defined then `#ffffff` is used)
+
+### OHOS
+
+- `ohos`: Enable OHOS icon generation.
+  - `true`: Generate OHOS icons.
+  - `false`: Skip OHOS icon generation.
+  - `{ generate, image_path, image_path_foreground, image_path_background, background_color }`: Nested OHOS config.
+- `image_path_ohos`: The icon image path for OHOS single-image mode (falls back to global `image_path`).
+- `image_path_ohos_foreground`: Foreground image path for OHOS layered mode.
+- `image_path_ohos_background`: Background image path for OHOS layered mode.
+- `background_color_ohos`: Background color used to flatten alpha in OHOS single-image mode (optional).
+
+Notes:
+- Layered mode is enabled only when both foreground and background paths are provided.
+- In layered mode, `image_path` (or `image_path_ohos`) is used for `startIcon.png`.
+- Nested OHOS config also accepts `image_path_ohos_*` and `background_color_ohos` keys.
 
 ### Web
 

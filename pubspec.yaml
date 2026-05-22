@@ -1,10 +1,10 @@
 name: flutter_launcher_icons
-description: A Flutter launcher icon tool with enhanced OHOS support, including single/layered icon workflows and fixed output naming.
+description: A command-line tool to generate Flutter launcher icons for Android, iOS, Web, Windows, macOS, and OHOS.
 version: 0.15.0
-maintainer: Mark O'Sullivan (@MarkOSullivan94)
-homepage: https://github.com/star4277/flutter_launcher_icons_ohos
-repository: https://github.com/star4277/flutter_launcher_icons_ohos
-issue_tracker: https://github.com/star4277/flutter_launcher_icons_ohos/issues
+maintainer: Star4277
+homepage: https://github.com/star4277/flutter_launcher_icons_plus
+repository: https://github.com/star4277/flutter_launcher_icons_plus
+issue_tracker: https://github.com/star4277/flutter_launcher_icons_plus/issues
 
 dependencies:
   args: ^2.5.0

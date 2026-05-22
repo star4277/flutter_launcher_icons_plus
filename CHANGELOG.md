@@ -4,9 +4,6 @@
 
 - OHOS: Added layered icon workflow with `image_path_foreground` + `image_path_background`.
 - OHOS: Added nested config parsing support under `flutter_launcher_icons -> ohos` (for example `ohos.generate`, `ohos.image_path`, `ohos.image_path_foreground`, `ohos.image_path_background`).
-- OHOS: Fixed deterministic output naming rules:
-  - Single mode outputs `icon.png`
-  - Layered mode outputs `foreground.png`, `background.png`, `startIcon.png` (from `image_path`)
 - OHOS: Updated module replacement behavior:
   - Layered mode sets `icon -> $media:layered_image`
   - Layered mode sets `startWindowIcon -> $media:startIcon`
