@@ -1,8 +1,8 @@
-import 'package:flutter_launcher_icons/constants.dart';
-import 'package:flutter_launcher_icons/main.dart' as flutter_launcher_icons;
-import 'package:flutter_launcher_icons/src/version.dart';
+import 'flutter_launcher_icons_plus.dart' as launcher_icons_plus;
 
 void main(List<String> arguments) {
-  print(introMessage(packageVersion));
-  flutter_launcher_icons.createIconsFromArguments(arguments);
+  print(
+    'This command is kept for compatibility. Use "flutter pub run flutter_launcher_icons_plus" instead.',
+  );
+  launcher_icons_plus.main(arguments);
 }

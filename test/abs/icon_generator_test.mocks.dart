@@ -5,8 +5,8 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i5;
 
-import 'package:flutter_launcher_icons/abs/icon_generator.dart' as _i2;
-import 'package:flutter_launcher_icons/config/config.dart' as _i3;
+import 'package:flutter_launcher_icons_plus/abs/icon_generator.dart' as _i2;
+import 'package:flutter_launcher_icons_plus/config/config.dart' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i4;
 

@@ -1,5 +1,5 @@
-import 'package:flutter_launcher_icons/pubspec_parser.dart';
-import 'package:flutter_launcher_icons/src/version.dart';
+import 'package:flutter_launcher_icons_plus/pubspec_parser.dart';
+import 'package:flutter_launcher_icons_plus/src/version.dart';
 import 'package:test/test.dart';
 
 void main() {

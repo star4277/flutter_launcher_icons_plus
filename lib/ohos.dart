@@ -1,9 +1,9 @@
 import 'dart:io';
 
-import 'package:flutter_launcher_icons/config/config.dart';
-import 'package:flutter_launcher_icons/constants.dart' as constants;
-import 'package:flutter_launcher_icons/custom_exceptions.dart';
-import 'package:flutter_launcher_icons/utils.dart' as utils;
+import 'package:flutter_launcher_icons_plus/config/config.dart';
+import 'package:flutter_launcher_icons_plus/constants.dart' as constants;
+import 'package:flutter_launcher_icons_plus/custom_exceptions.dart';
+import 'package:flutter_launcher_icons_plus/utils.dart' as utils;
 import 'package:image/image.dart';
 import 'package:path/path.dart' as path;
 
@@ -134,15 +134,6 @@ Future<void> createIcons(Config config, String? flavor) async {
   Image? image = await utils.decodeImageFile(filePath);
   if (image == null) {
     return;
-  }
-  if (config.backgroundColorOhos != null && image.hasAlpha) {
-    final backgroundColor = _getBackgroundColor(config);
-    final pixel = image.getPixel(0, 0);
-    do {
-      pixel.set(_alphaBlend(pixel, backgroundColor));
-    } while (pixel.moveNext());
-
-    image = image.convert(numChannels: 3);
   }
 
   utils.printStatus(
@@ -376,39 +367,5 @@ Future<void> _copyLayeredIconWithoutResize({
     final target = File(targetPath);
     await target.parent.create(recursive: true);
     await target.writeAsBytes(bytes);
-  }
-}
-
-ColorUint8 _getBackgroundColor(Config config) {
-  final backgroundColorHex = config.backgroundColorOhos!.startsWith('#')
-      ? config.backgroundColorOhos!.substring(1)
-      : config.backgroundColorOhos!;
-  if (backgroundColorHex.length != 6) {
-    throw Exception('background_color_ios hex should be 6 characters long');
-  }
-
-  final backgroundByte = int.parse(backgroundColorHex, radix: 16);
-  return ColorUint8.rgba(
-    (backgroundByte >> 16) & 0xff,
-    (backgroundByte >> 8) & 0xff,
-    (backgroundByte >> 0) & 0xff,
-    0xff,
-  );
-}
-
-Color _alphaBlend(Color fg, ColorUint8 bg) {
-  if (fg.format != Format.uint8) {
-    fg = fg.convert(format: Format.uint8);
-  }
-  if (fg.a == 0) {
-    return bg;
-  } else {
-    final invAlpha = 0xff - fg.a;
-    return ColorUint8.rgba(
-      (fg.a * fg.r + invAlpha * bg.g) ~/ 0xff,
-      (fg.a * fg.g + invAlpha * bg.a) ~/ 0xff,
-      (fg.a * fg.b + invAlpha * bg.b) ~/ 0xff,
-      0xff,
-    );
   }
 }

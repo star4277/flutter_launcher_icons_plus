@@ -1,12 +1,12 @@
 import 'dart:io';
 
 import 'package:checked_yaml/checked_yaml.dart' as yaml;
-import 'package:flutter_launcher_icons/config/macos_config.dart';
-import 'package:flutter_launcher_icons/config/web_config.dart';
-import 'package:flutter_launcher_icons/config/windows_config.dart';
-import 'package:flutter_launcher_icons/constants.dart' as constants;
-import 'package:flutter_launcher_icons/custom_exceptions.dart';
-import 'package:flutter_launcher_icons/utils.dart' as utils;
+import 'package:flutter_launcher_icons_plus/config/macos_config.dart';
+import 'package:flutter_launcher_icons_plus/config/web_config.dart';
+import 'package:flutter_launcher_icons_plus/config/windows_config.dart';
+import 'package:flutter_launcher_icons_plus/constants.dart' as constants;
+import 'package:flutter_launcher_icons_plus/custom_exceptions.dart';
+import 'package:flutter_launcher_icons_plus/utils.dart' as utils;
 import 'package:json_annotation/json_annotation.dart';
 import 'package:path/path.dart' as path;
 
@@ -39,7 +39,6 @@ class Config {
     this.removeAlphaIOS = false,
     this.desaturateTintedToGrayscaleIOS = false,
     this.backgroundColorIOS = '#ffffff',
-    this.backgroundColorOhos,
     this.webConfig,
     this.windowsConfig,
     this.macOSConfig,
@@ -88,11 +87,21 @@ class Config {
           if (json != null) {
             // if we have flutter_icons configuration ...
             if (json['flutter_icons'] != null) {
-              stderr.writeln('\n⚠ Warning: flutter_icons has been deprecated '
-                  'please use flutter_launcher_icons instead in your yaml files');
+              stderr.writeln('\n鈿?Warning: flutter_icons has been deprecated '
+                  'please use flutter_launcher_icons_plus instead in your yaml files');
               return Config.fromJson(
                 _normalizeOhosConfig(
                   Map<dynamic, dynamic>.from(json['flutter_icons'] as Map),
+                ),
+              );
+            }
+            // if we have flutter_launcher_icons_plus configuration ...
+            if (json['flutter_launcher_icons_plus'] != null) {
+              return Config.fromJson(
+                _normalizeOhosConfig(
+                  Map<dynamic, dynamic>.from(
+                    json['flutter_launcher_icons_plus'] as Map,
+                  ),
                 ),
               );
             }
@@ -147,12 +156,6 @@ class Config {
         ohosMap['image_path_background']) as String?;
     if (backgroundPath != null) {
       normalized['image_path_ohos_background'] = backgroundPath;
-    }
-
-    final backgroundColor = (ohosMap['background_color_ohos'] ??
-        ohosMap['background_color']) as String?;
-    if (backgroundColor != null) {
-      normalized['background_color_ohos'] = backgroundColor;
     }
 
     return normalized;
@@ -230,10 +233,6 @@ class Config {
   /// IOS background_color_ios
   @JsonKey(name: 'background_color_ios')
   final String backgroundColorIOS;
-
-  /// OHOS background_color_ohos
-  @JsonKey(name: 'background_color_ohos')
-  final String? backgroundColorOhos;
 
   /// Web platform config
   @JsonKey(name: 'web')

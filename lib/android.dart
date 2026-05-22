@@ -2,12 +2,12 @@
 
 import 'dart:io';
 
-import 'package:flutter_launcher_icons/config/config.dart';
-import 'package:flutter_launcher_icons/constants.dart' as constants;
-import 'package:flutter_launcher_icons/constants.dart';
-import 'package:flutter_launcher_icons/custom_exceptions.dart';
-import 'package:flutter_launcher_icons/utils.dart' as utils;
-import 'package:flutter_launcher_icons/xml_templates.dart' as xml_template;
+import 'package:flutter_launcher_icons_plus/config/config.dart';
+import 'package:flutter_launcher_icons_plus/constants.dart' as constants;
+import 'package:flutter_launcher_icons_plus/constants.dart';
+import 'package:flutter_launcher_icons_plus/custom_exceptions.dart';
+import 'package:flutter_launcher_icons_plus/utils.dart' as utils;
+import 'package:flutter_launcher_icons_plus/xml_templates.dart' as xml_template;
 import 'package:image/image.dart';
 import 'package:path/path.dart' as path;
 

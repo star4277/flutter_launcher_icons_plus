@@ -2,15 +2,15 @@ import 'dart:io';
 
 import 'package:args/args.dart';
 
-import 'package:flutter_launcher_icons/constants.dart';
-import 'package:flutter_launcher_icons/src/version.dart';
+import 'package:flutter_launcher_icons_plus/constants.dart';
+import 'package:flutter_launcher_icons_plus/src/version.dart';
 
 const _defaultConfigFileName = './flutter_launcher_icons.yaml';
 
 /// The function will be called from command line
 /// using the following command:
 /// ```sh
-/// flutter pub run flutter_launcher_icons:generate
+/// flutter pub run flutter_launcher_icons_plus:generate
 /// ```
 ///
 /// Calling this function will generate a flutter_launcher_icons.yaml file
@@ -70,10 +70,10 @@ void _generateConfigFile(File configFile) {
   try {
     configFile.writeAsStringSync(_configFileTemplate);
 
-    print('\nConfig file generated successfully 🎉');
+    print('\nConfig file generated successfully');
     print(
       'You can now use this new config file by using the command below:\n\n'
-      'flutter pub run flutter_launcher_icons'
+      'flutter pub run flutter_launcher_icons_plus'
       '${configFile.path == _defaultConfigFileName ? '' : ' -f ${configFile.path}'}\n',
     );
   } on Exception catch (e) {
@@ -82,8 +82,8 @@ void _generateConfigFile(File configFile) {
 }
 
 const _configFileTemplate = '''
-# flutter pub run flutter_launcher_icons
-flutter_launcher_icons:
+# flutter pub run flutter_launcher_icons_plus
+flutter_launcher_icons_plus:
   image_path: "assets/icon/icon.png"
 
   android: "launcher_icon"

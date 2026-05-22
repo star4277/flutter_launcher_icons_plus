@@ -1,6 +1,6 @@
 # Flutter Launcher Icons
 
-[简体中文](README.zh-CN.md)
+[Chinese](README.zh-CN.md)
 
 [![Flutter Community: flutter_launcher_icons](https://fluttercommunity.dev/_github/header/flutter_launcher_icons)](https://github.com/fluttercommunity/community)
 
@@ -15,7 +15,7 @@ A command-line tool which simplifies the task of updating your Flutter app's lau
 Run the following command to create a new config automatically:
 
 ```shell
-dart run flutter_launcher_icons:generate
+dart run flutter_launcher_icons_plus:generate
 ```
 
 This will create a new file called `flutter_launcher_icons.yaml` in your `flutter` project's root directory.
@@ -23,13 +23,13 @@ This will create a new file called `flutter_launcher_icons.yaml` in your `flutte
 If you want to override the default location or name of the config file, use the `-f` flag:
 
 ```shell
-dart run flutter_launcher_icons:generate -f <your config file name here>
+dart run flutter_launcher_icons_plus:generate -f <your config file name here>
 ```
 
 To override an existing config file, use the `-o` flag:
 
 ```shell
-dart run flutter_launcher_icons:generate -o
+dart run flutter_launcher_icons_plus:generate -o
 ```
 
 OR
@@ -39,9 +39,9 @@ An example is shown below. More complex examples [can be found in the example pr
 
 ```yaml
 dev_dependencies:
-  flutter_launcher_icons: "^0.14.4"
+  flutter_launcher_icons_plus: "^0.15.0"
 
-flutter_launcher_icons:
+flutter_launcher_icons_plus:
   android: "launcher_icon"
   image_path: "assets/icon/icon.png"
   min_sdk_android: 21 # android min sdk min:16, default 21
@@ -51,7 +51,7 @@ flutter_launcher_icons:
     image_path: "path/to/image.png"
     # Optional layered mode:
     image_path_foreground: "path/to/foreground.png"
-    image_path_background: "path/to/background.png"  
+    image_path_background: "path/to/background.png"
   web:
     generate: true
     image_path: "path/to/image.png"
@@ -72,7 +72,7 @@ After setting up the configuration, all that is left to do is run the package.
 
 ```shell
 flutter pub get
-dart run flutter_launcher_icons
+dart run flutter_launcher_icons_plus
 ```
 
 If you name your configuration file something other than `flutter_launcher_icons.yaml` or `pubspec.yaml` you will need to specify
@@ -80,7 +80,7 @@ the name of the file when running the package.
 
 ```shell
 flutter pub get
-dart run flutter_launcher_icons -f <your config file name here>
+dart run flutter_launcher_icons_plus -f <your config file name here>
 ```
 
 Note: If you are not using the existing `pubspec.yaml` ensure that your config file is located in the same directory as it.
@@ -134,16 +134,15 @@ Shown below is the full list of attributes which you can specify within your Flu
 - `ohos`: Enable OHOS icon generation.
   - `true`: Generate OHOS icons.
   - `false`: Skip OHOS icon generation.
-  - `{ generate, image_path, image_path_foreground, image_path_background, background_color }`: Nested OHOS config.
+  - `{ generate, image_path, image_path_foreground, image_path_background }`: Nested OHOS config.
 - `image_path_ohos`: The icon image path for OHOS single-image mode (falls back to global `image_path`).
 - `image_path_ohos_foreground`: Foreground image path for OHOS layered mode.
 - `image_path_ohos_background`: Background image path for OHOS layered mode.
-- `background_color_ohos`: Background color used to flatten alpha in OHOS single-image mode (optional).
 
 Notes:
 - Layered mode is enabled only when both foreground and background paths are provided.
 - In layered mode, `image_path` (or `image_path_ohos`) is used for `startIcon.png`.
-- Nested OHOS config also accepts `image_path_ohos_*` and `background_color_ohos` keys.
+- Nested OHOS config also accepts `image_path_ohos_*`.
 
 ### Web
 

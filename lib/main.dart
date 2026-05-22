@@ -3,18 +3,18 @@
 import 'dart:io';
 
 import 'package:args/args.dart';
-import 'package:flutter_launcher_icons/abs/icon_generator.dart';
-import 'package:flutter_launcher_icons/android.dart' as android_launcher_icons;
-import 'package:flutter_launcher_icons/config/config.dart';
-import 'package:flutter_launcher_icons/constants.dart' as constants;
-import 'package:flutter_launcher_icons/constants.dart';
-import 'package:flutter_launcher_icons/custom_exceptions.dart';
-import 'package:flutter_launcher_icons/ios.dart' as ios_launcher_icons;
-import 'package:flutter_launcher_icons/logger.dart';
-import 'package:flutter_launcher_icons/macos/macos_icon_generator.dart';
-import 'package:flutter_launcher_icons/ohos.dart' as ohos_launcher_icons;
-import 'package:flutter_launcher_icons/web/web_icon_generator.dart';
-import 'package:flutter_launcher_icons/windows/windows_icon_generator.dart';
+import 'package:flutter_launcher_icons_plus/abs/icon_generator.dart';
+import 'package:flutter_launcher_icons_plus/android.dart' as android_launcher_icons;
+import 'package:flutter_launcher_icons_plus/config/config.dart';
+import 'package:flutter_launcher_icons_plus/constants.dart' as constants;
+import 'package:flutter_launcher_icons_plus/constants.dart';
+import 'package:flutter_launcher_icons_plus/custom_exceptions.dart';
+import 'package:flutter_launcher_icons_plus/ios.dart' as ios_launcher_icons;
+import 'package:flutter_launcher_icons_plus/logger.dart';
+import 'package:flutter_launcher_icons_plus/macos/macos_icon_generator.dart';
+import 'package:flutter_launcher_icons_plus/ohos.dart' as ohos_launcher_icons;
+import 'package:flutter_launcher_icons_plus/web/web_icon_generator.dart';
+import 'package:flutter_launcher_icons_plus/windows/windows_icon_generator.dart';
 import 'package:path/path.dart' as path;
 
 const String fileOption = 'file';
@@ -93,9 +93,9 @@ Future<void> createIconsFromArguments(List<String> arguments) async {
         logger,
         prefixPath,
       );
-      print('\n✓ Successfully generated launcher icons');
+      print('\n鉁?Successfully generated launcher icons');
     } catch (e) {
-      stderr.writeln('\n✕ Could not generate launcher icons');
+      stderr.writeln('\n鉁?Could not generate launcher icons');
       stderr.writeln(e);
       exit(2);
     }
@@ -117,9 +117,9 @@ Future<void> createIconsFromArguments(List<String> arguments) async {
           flavor,
         );
       }
-      print('\n✓ Successfully generated launcher icons for flavors');
+      print('\n鉁?Successfully generated launcher icons for flavors');
     } catch (e) {
-      stderr.writeln('\n✕ Could not generate launcher icons for flavors');
+      stderr.writeln('\n鉁?Could not generate launcher icons for flavors');
       stderr.writeln(e);
       exit(2);
     }

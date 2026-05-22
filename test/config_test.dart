@@ -1,5 +1,5 @@
-import 'package:flutter_launcher_icons/config/config.dart';
-import 'package:flutter_launcher_icons/custom_exceptions.dart';
+import 'package:flutter_launcher_icons_plus/config/config.dart';
+import 'package:flutter_launcher_icons_plus/custom_exceptions.dart';
 import 'package:path/path.dart' as path;
 import 'package:test/test.dart';
 import 'package:test_descriptor/test_descriptor.dart' as d;

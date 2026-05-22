@@ -1,6 +1,6 @@
-import 'package:flutter_launcher_icons/abs/icon_generator.dart';
-import 'package:flutter_launcher_icons/config/config.dart';
-import 'package:flutter_launcher_icons/logger.dart';
+import 'package:flutter_launcher_icons_plus/abs/icon_generator.dart';
+import 'package:flutter_launcher_icons_plus/config/config.dart';
+import 'package:flutter_launcher_icons_plus/logger.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:path/path.dart' as path;

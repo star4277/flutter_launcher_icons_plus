@@ -48,8 +48,6 @@ Config _$ConfigFromJson(Map json) => $checkedCreate(
               'desaturate_tinted_to_grayscale_ios', (v) => v as bool? ?? false),
           backgroundColorIOS: $checkedConvert(
               'background_color_ios', (v) => v as String? ?? '#ffffff'),
-          backgroundColorOhos:
-              $checkedConvert('background_color_ohos', (v) => v as String?),
           webConfig: $checkedConvert(
               'web', (v) => v == null ? null : WebConfig.fromJson(v as Map)),
           windowsConfig: $checkedConvert('windows',
@@ -76,7 +74,6 @@ Config _$ConfigFromJson(Map json) => $checkedCreate(
         'removeAlphaIOS': 'remove_alpha_ios',
         'desaturateTintedToGrayscaleIOS': 'desaturate_tinted_to_grayscale_ios',
         'backgroundColorIOS': 'background_color_ios',
-        'backgroundColorOhos': 'background_color_ohos',
         'webConfig': 'web',
         'windowsConfig': 'windows',
         'macOSConfig': 'macos'
@@ -104,7 +101,6 @@ Map<String, dynamic> _$ConfigToJson(Config instance) => <String, dynamic>{
       'desaturate_tinted_to_grayscale_ios':
           instance.desaturateTintedToGrayscaleIOS,
       'background_color_ios': instance.backgroundColorIOS,
-      'background_color_ohos': instance.backgroundColorOhos,
       'web': instance.webConfig,
       'windows': instance.windowsConfig,
       'macos': instance.macOSConfig,

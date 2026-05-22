@@ -1,10 +1,10 @@
 import 'dart:io';
 
-import 'package:flutter_launcher_icons/abs/icon_generator.dart';
-import 'package:flutter_launcher_icons/config/config.dart';
-import 'package:flutter_launcher_icons/config/macos_config.dart';
-import 'package:flutter_launcher_icons/logger.dart';
-import 'package:flutter_launcher_icons/macos/macos_icon_generator.dart';
+import 'package:flutter_launcher_icons_plus/abs/icon_generator.dart';
+import 'package:flutter_launcher_icons_plus/config/config.dart';
+import 'package:flutter_launcher_icons_plus/config/macos_config.dart';
+import 'package:flutter_launcher_icons_plus/logger.dart';
+import 'package:flutter_launcher_icons_plus/macos/macos_icon_generator.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:path/path.dart' as path;

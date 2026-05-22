@@ -2,37 +2,37 @@
 
 [English README](README.md)
 
-一个用于 Flutter 的命令行工具，用来快速生成/替换多平台启动图标。
+用于 Flutter 的命令行工具，快速生成/替换多平台启动图标。
 
 ## 使用指南
 
 ### 1. 生成配置文件
 
 ```shell
-dart run flutter_launcher_icons:generate
+dart run flutter_launcher_icons_plus:generate
 ```
 
-会在 Flutter 项目根目录生成 `flutter_launcher_icons.yaml`。
+默认会在 Flutter 项目根目录生成 `flutter_launcher_icons.yaml`。
 
-如果要指定文件名或路径：
+自定义文件名：
 
 ```shell
-dart run flutter_launcher_icons:generate -f <your config file name here>
+dart run flutter_launcher_icons_plus:generate -f <your config file name here>
 ```
 
-如果要覆盖已存在的配置：
+覆盖已存在文件：
 
 ```shell
-dart run flutter_launcher_icons:generate -o
+dart run flutter_launcher_icons_plus:generate -o
 ```
 
-也可以直接写在 `pubspec.yaml` 里，例如：
+也可以直接写进 `pubspec.yaml`：
 
 ```yaml
 dev_dependencies:
-  flutter_launcher_icons: "^0.14.4"
+  flutter_launcher_icons_plus: "^0.15.0"
 
-flutter_launcher_icons:
+flutter_launcher_icons_plus:
   android: "launcher_icon"
   ios: true
   ohos:
@@ -41,7 +41,6 @@ flutter_launcher_icons:
     # 可选：分层图标模式
     image_path_foreground: "path/to/foreground.png"
     image_path_background: "path/to/background.png"
-    background_color: "#hexcode"
   image_path: "assets/icon/icon.png"
   min_sdk_android: 21
   web:
@@ -62,30 +61,30 @@ flutter_launcher_icons:
 
 ```shell
 flutter pub get
-dart run flutter_launcher_icons
+dart run flutter_launcher_icons_plus
 ```
 
-如果你的配置文件不是默认的 `flutter_launcher_icons.yaml` 或 `pubspec.yaml`，需要加 `-f`：
+如果你使用了非默认配置文件：
 
 ```shell
 flutter pub get
-dart run flutter_launcher_icons -f <your config file name here>
+dart run flutter_launcher_icons_plus -f <your config file name here>
 ```
 
 ## 配置项说明
 
 ### 全局
 
-- `image_path`：通用图标路径（各平台未单独指定时会回退到这里）。
+- `image_path`：通用图标路径。
 
 ### Android
 
 - `android`：`true/false` 或自定义图标名。
 - `image_path_android`：Android 专用图标路径。
 - `min_sdk_android`：Android min sdk。
-- `adaptive_icon_background`：自适应图标背景色或背景图。
+- `adaptive_icon_background`：自适应图标背景色/背景图。
 - `adaptive_icon_foreground`：自适应图标前景图。
-- `adaptive_icon_foreground_inset`：前景内边距百分比，默认 `16`。
+- `adaptive_icon_foreground_inset`：前景 inset 百分比，默认 `16`。
 - `adaptive_icon_monochrome`：Android 13+ 单色主题图标。
 
 ### iOS
@@ -96,23 +95,21 @@ dart run flutter_launcher_icons -f <your config file name here>
 - `image_path_ios_dark_transparent`：iOS 18+ 深色模式图标。
 - `image_path_ios_tinted_grayscale`：iOS 18+ 着色模式灰度图标。
 - `desaturate_tinted_to_grayscale_ios`：自动去饱和为灰度图。
-- `background_color_ios`：移除透明通道时使用的背景色。
+- `background_color_ios`：移除透明通道时使用背景色。
 
 ### OHOS
 
 - `ohos`：
   - `true`：启用 OHOS 图标生成。
   - `false`：跳过 OHOS。
-  - 也支持嵌套写法：`ohos.generate`、`ohos.image_path`、`ohos.image_path_foreground`、`ohos.image_path_background`、`ohos.background_color`。
+  - 支持嵌套：`ohos.generate`、`ohos.image_path`、`ohos.image_path_foreground`、`ohos.image_path_background`。
 - `image_path_ohos`：OHOS 单图模式图标路径（未设置时回退到全局 `image_path`）。
 - `image_path_ohos_foreground`：OHOS 分层前景图路径。
 - `image_path_ohos_background`：OHOS 分层背景图路径。
-- `background_color_ohos`：OHOS 单图模式下，用于处理透明通道的背景色（可选）。
 
 OHOS 规则：
-- 单图模式：生成 `icon.png`。
-- 分层模式：同时提供前景和背景路径后启用，生成 `foreground.png`、`background.png`，并使用 `image_path`（或 `image_path_ohos`）生成 `startIcon.png`。
-- 嵌套配置下也支持 `image_path_ohos_*` 与 `background_color_ohos` 这些等价字段。
+- 单图模式生成 `icon.png`。
+- 分层模式（前景+背景都提供）生成 `foreground.png`、`background.png`，并使用 `image_path`（或 `image_path_ohos`）生成 `startIcon.png`。
 
 ### Web
 
@@ -134,13 +131,8 @@ OHOS 规则：
 
 ## Flavor 支持
 
-可以按 flavor 创建配置文件：`flutter_launcher_icons-<flavor>.yaml`。
-
-例如：`flutter_launcher_icons-development.yaml`。
+配置文件格式与普通配置一致，可使用：`flutter_launcher_icons-<flavor>.yaml`。
 
 ## 问题反馈
 
-如果遇到问题，请在这里提交：
-
 - https://github.com/fluttercommunity/flutter_launcher_icons/issues
-
